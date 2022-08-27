@@ -1,0 +1,35 @@
+{
+  "canisters": {
+    "Avatar_backend": {
+      "main": "src/Avatar_backend/main.mo",
+      "type": "motoko"
+    },
+    "Avatar_frontend": {
+      "dependencies": [
+        "Avatar_backend"
+      ],
+      "frontend": {
+        "entrypoint": "src/Avatar_frontend/src/index.html"
+      },
+      "source": [
+        "src/Avatar_frontend/assets",
+        "dist/Avatar_frontend/"
+      ],
+      "type": "assets"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "dfx": "0.11.1",
+  "networks": {
+    "local": {
+      "bind": "127.0.0.1:8000",
+      "type": "ephemeral"
+    }
+  },
+  "version": 1
+}
