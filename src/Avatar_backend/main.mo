@@ -1,6 +1,5 @@
 import Trie "mo:base/Trie";
 import Hash "mo:base/Hash";
-import Nat "mo:base/Nat";
 import Result "mo:base/Result";
 import Principal "mo:base/Principal";
 
@@ -20,7 +19,6 @@ actor Avatar {
     id: Principal;
   };
 
-
   //We don't want someone to pass the ID, we do a ProfileUpdate
   type ProfileUpdate = {
     bio : Bio;
@@ -36,9 +34,8 @@ actor Avatar {
   //Principal is a key, Profile is a type, we initialise with empty
   stable var profiles : Trie.Trie<Principal, Profile> = Trie.empty();
 
-
   //Create a profile
-  public shared(msg) func create (profile: Profile) : async Result.Result<(), Error> {
+  public shared(msg) func create (profile: ProfileUpdate) : async Result.Result<(), Error> {
     
     let callerId = msg.caller; //type Principal
 
@@ -97,7 +94,7 @@ actor Avatar {
 
 
   //Function that update a profile
-  public shared(msg) func update (profile : Profile) : async Result.Result<(), Error> {
+  public shared(msg) func update (profile : ProfileUpdate) : async Result.Result<(), Error> {
     
     //Get caller principal
     let callerId = msg.caller;
@@ -144,7 +141,7 @@ actor Avatar {
   };
 
   //Function that delete a profile
-  public shared(msg) func delete (profileId : Nat) : async Result.Result<(), Error> {
+  public shared(msg) func delete () : async Result.Result<(), Error> {
     
     //Get caller principal
     let callerId = msg.caller;
