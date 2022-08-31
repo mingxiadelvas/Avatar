@@ -19,15 +19,7 @@ function Home() {
             setIsLoaded(true);
         });
     }, [actor]);
-
-   if(!isLoaded) {
-        return (
-            <Flex>
-                <Loader />
-            </Flex>
-        );
-    }
-
+    
     return (
     <section> 
         Home
