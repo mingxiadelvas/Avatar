@@ -1,6 +1,6 @@
 import React from 'react'
 import { ProfileUpdate }  from '../../../declarations/Avatar_backend/Avatar_backend.did';
-import { Form, TextField } from '@adobe/react-spectrum';
+import { Form, TextField, TextArea, Button } from '@adobe/react-spectrum';
 
 interface Props {
     submitCallback: (profile: ProfileUpdate) => void
@@ -56,7 +56,7 @@ class ProfileForm extends React.Component<Props> {
             onChange={(value) => handleChange("givenName", value)}
             />
             <TextField 
-            label="Lasr Name" 
+            label="Last Name" 
             name="familyName" 
             value={familyName}
             onChange={(value) => handleChange("familyName", value)}
@@ -73,13 +73,20 @@ class ProfileForm extends React.Component<Props> {
             value={location}
             onChange={(value) => handleChange("location", value)}
             />  
-            <TextField 
+            <TextArea 
             label="About" 
             name="about" 
             value={about}
             onChange={(value) => handleChange("about", value)}
-            />                      
+            />   
+            <Button 
+            variant='primary' 
+            onPress={handleSubmit}
+            >
+                Submit
+            </Button>                      
         </Form>
+      
         )}
 }
 

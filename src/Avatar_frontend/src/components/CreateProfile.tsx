@@ -8,12 +8,13 @@ interface Props {
 }
 
 function CreateProfile(props: Props) {
+    const { setProfile } = props;
     const { actor } = useContext(AppContext);
     const submitCallback = async (profile: ProfileUpdate) => {
         await actor?.create(profile);
         const created = await actor?.read();
         if (created && "ok" in created) {
-            props.setProfile(created.ok);
+            setProfile(created.ok);
         }
     };
     

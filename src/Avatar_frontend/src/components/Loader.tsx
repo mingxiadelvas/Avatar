@@ -30,7 +30,7 @@ function Loader(props: Props) {
   return (
     <>
       <Figure>
-        <img src={ glitch } alt="Page is loading" />
+        <img src={ glitch } />
         <figcaption>
           <h2>{message}</h2>
         </figcaption>
@@ -39,4 +39,4 @@ function Loader(props: Props) {
   );
 }
 
-export default React.memo(Loader);
+export default Loader;

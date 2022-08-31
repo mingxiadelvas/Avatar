@@ -55,7 +55,7 @@ module.exports = {
     minimizer: [new TerserPlugin()],
   },
   resolve: {
-    extensions: ["", ".js", ".ts", ".jsx", ".tsx", ".css"],
+    extensions: [".js", ".ts", ".jsx", ".tsx", ".css"],
     fallback: {
       assert: require.resolve("assert/"),
       buffer: require.resolve("buffer/"),
@@ -81,10 +81,6 @@ module.exports = {
       {
         test: /\.svg$/,
         use: ["@svgr/webpack"],
-      },
-      {
-        test: /\.(jpg|png|webp)$/,
-        use: ["url-loader"],
       },
       {
         test: /\.(jpg|png|webp)$/,

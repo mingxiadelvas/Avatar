@@ -1,7 +1,10 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { Profile } from '../../../declarations/Avatar_backend/Avatar_backend.did';
 import { AppContext } from '../App';
+import { Flex } from '@adobe/react-spectrum';
 import CreateProfile from './CreateProfile';
+import Loader from './Loader';
+import ManageProfile from './ManageProfile';
 
 function Home() {
     const [profile, setProfile] = useState<Profile>();
@@ -17,10 +20,22 @@ function Home() {
         });
     }, [actor]);
 
+   if(!isLoaded) {
+        return (
+            <Flex>
+                <Loader />
+            </Flex>
+        );
+    }
+
     return (
     <section> 
         Home
-        {profile ? <></> : <CreateProfile setProfile={ setProfile } />}
+        {profile ? ( 
+        <ManageProfile setProfile={ setProfile } profile={profile} /> 
+        ) : ( 
+        <CreateProfile setProfile={ setProfile } />
+    )}
     </section>
   );
 }
